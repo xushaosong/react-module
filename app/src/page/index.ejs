@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1, minimum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="MobileOptimized" content="320">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="full-screen" content="yes">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="browsermode" content="application">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta name="x5-page-mode" content="app">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="alternate icon" type="image/png" href="i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="AMUI React" />
+
+  <title><%= htmlWebpackPlugin.options.title %></title>
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+    <script>
+      if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body);
+        }, false);
+      }
+      if(!window.Promise) {
+        document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+      }
+    </script>
+
+  <style>
+    #page {
+      /*min-height: 100%;*/
+      width: 100%;
+      background-color: white;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+
+    var p1 = location.href.split("?");
+    var paramsDict = {};
+    if (p1.length > 1) {
+      var paramsValues = location.href.split("?")[1].split("&");
+
+
+      for (var i = 0; i < paramsValues.length; i++) {
+        var p = paramsValues[i];
+        paramsDict[p.split("=")[0]] = p.split("=")[1];
+      }
+    }
+    if (localStorage.getItem("loginData")) {
+      Object.assign(paramsDict, JSON.parse(localStorage.getItem("loginData")));
+    }
+
+    window.locationParams = paramsDict;
+    console.log(paramsDict);
+
+
+    window.scale = 1;
+    var recalc = function() {
+      var dpr, rem, scale;
+      var docEl = document.documentElement;
+      var fontEl = document.createElement('style');
+      var metaEl = document.querySelector('meta[name="viewport"]');
+
+      dpr = 1; // window.devicePixelRatio || 1;
+      rem = docEl.clientWidth * dpr / 3.75;
+      if (rem > 130) {
+        rem = 130;
+      }
+      // scale = 1 / dpr;
+
+      scale = window.scale;
+
+      // if (docEl.clientWidth > 500) {
+      //   let page = document.getElementById('page');
+      //   page.style.width = 500 + 'px';
+      //   page.style.marginLeft = (docEl.clientWidth - 500) / 2 + 'px';
+      //
+      //   rem = rem / 5;
+      //   // scale = 1;
+      // } else {
+      //   let page = document.getElementById('page');
+      //   page.style.width = 100 + '%';
+      // }
+
+
+      // 设置viewport，进行缩放，达到高清效果
+      metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ',maximum-scale=' +
+        scale + ', minimum-scale=' + scale + ',user-scalable=no');
+
+      // 动态写入样式
+      docEl.firstElementChild.appendChild(fontEl);
+      fontEl.innerHTML = 'html{font-size:' + rem + 'px!important;}';
+
+      window.rem2px = function (v) {
+        v = parseFloat(v);
+        return v * rem;
+      };
+      window.px2rem = function (v) {
+        v = parseFloat(v);
+        return v / rem;
+      };
+      window.scale = scale;
+      window.dpr = dpr;
+      window.rem = rem;
+      console.log("rem:" + rem);
+
+      var event = new Event("resizeEvtAction");
+      document.dispatchEvent(event);
+      window.dispatchEvent(event);
+    }
+    var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+    window.addEventListener(resizeEvt, recalc, false);
+    document.addEventListener('DOMContentLoaded', recalc, false);
+    recalc();
+  </script>
+</head>
+<body id="body">
+<div id="page"></div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+
+
+
+@delayTime : -0.8s;
+@import "../../../less/util";
+.footer-loading-container {
+  height: 1rem;
+  width: 100%;
+
+  #noData {
+    .font-normal(0.16rem);
+    color: #C8C8C8;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  #LoadMoreSign {
+    .font-normal(0.16rem);
+    color: #C8C8C8;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
+  .spinner {
+    width: 100%;
+    height: 0.5rem;
+    text-align: center;
+  }
+
+  .rect {
+    background-color: #67CF22;
+    height: 100%;
+    width: 0.1rem;
+    -webkit-animation: stretchdelay 0.9s infinite ease-in-out;
+    animation: stretchdelay 0.9s infinite ease-in-out;
+  }
+  .rect+.rect  {
+    margin-left: 5px;
+  }
+  .spinner .rect2 {
+    -webkit-animation-delay: @delayTime;
+    animation-delay: @delayTime;
+  }
+
+  .spinner .rect3 {
+    -webkit-animation-delay: 0.1 + @delayTime;
+    animation-delay: 0.1 + @delayTime;
+  }
+
+  .spinner .rect4 {
+    -webkit-animation-delay: 0.2 + @delayTime;
+    animation-delay: 0.2 + @delayTime;
+  }
+
+  .spinner .rect5 {
+    -webkit-animation-delay: 0.3 + @delayTime;
+    animation-delay: 0.3 + @delayTime;
+  }
+
+  @-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+    20% { -webkit-transform: scaleY(1.0) }
+  }
+
+  @keyframes stretchdelay {
+    0%, 40%, 100% {
+      transform: scaleY(0.4);
+      -webkit-transform: scaleY(0.4);
+    }  20% {
+         transform: scaleY(1.0);
+         -webkit-transform: scaleY(1.0);
+       }
+  }
+}

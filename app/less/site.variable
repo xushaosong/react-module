@@ -1,0 +1,17 @@
+@pageMinWidth       : 320px;
+
+@pageFont          : 'Helvetica Neue', Helvetica, STHeiTi, Arial, sans-serif;
+@headerFont        : 'Helvetica Neue', Helvetica, STHeiTi, Arial, sans-serif;
+@headerLineHeightOffset : (@headerLineHeight - 0.1em) / 2;
+@headerTopMargin    : ~"calc(0.2rem - "@headerLineHeightOffset~")";
+@headerBottomMargin : 0.1rem;
+@textColor           : rgba(0, 0, 0, 0.8);
+
+@headerFontWeight : bold;
+@headerLineHeight : 1.33em;
+@headerMargin       : @headerTopMargin 0em @headerBottomMargin;
+@inputHighlightBackground : rgba(100, 100, 100, 0.4);
+@inputHighlightColor      : @textColor;
+
+
+@navigatorHeight : 0.64rem;

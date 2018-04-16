@@ -1,0 +1,41 @@
+
+.tabbar-container {
+
+  width: 100%;
+  background-color: transparent;
+  .tabbar-tabs {
+    display: table;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    z-index: 99;
+    border-top: 1px solid #e6e6e6;
+    overflow: hidden;
+    .tabbar-item-container {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+      .tabbar-img {
+        &>img {
+          //width: 20px;
+
+          height: 20px;
+        }
+        margin-top: 5px;
+      }
+      &>text {
+        font-size: 12px;
+        line-height: 15px;
+        opacity: 0.8;
+      }
+      .msg-dot {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+    }
+  }
+
+}

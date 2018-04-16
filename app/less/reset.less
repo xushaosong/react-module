@@ -1,0 +1,33 @@
+
+/*******************************
+             Reset
+*******************************/
+
+/* Border-Box */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  -ms-touch-action: none;
+}
+
+/* iPad Input Shadows */
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+  -webkit-appearance: none;
+  -moz-appearance: none; /* mobile firefox too! */
+}
+
+
+//伪元素改变number类型input框的默认样式
+input[type=number]::-webkit-textfield-decoration-container {
+  background-color: transparent;
+}
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
